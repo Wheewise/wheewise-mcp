@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/wheewise-motion.gif" alt="Wheewise" width="460" />
-
 <br />
 
 <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/wordmark.png" alt="Wheewise" width="260" />
