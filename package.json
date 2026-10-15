@@ -1,7 +1,7 @@
 {
   "name": "@wheewise/dealer-mcp",
-  "version": "0.1.0",
-  "description": "MCP server for Wheewise dealers: let Claude or any MCP assistant manage your stock, buyer chats, test drives, reviews and shop website.",
+  "version": "0.2.0",
+  "description": "MCP server for Wheewise dealers: build your own private website with Wheewise as its backend (vehicles, leads, test drives), and manage your shop from Claude or any MCP assistant.",
   "mcpName": "io.github.wheewise/dealer-mcp",
   "type": "module",
   "license": "MIT",
@@ -13,7 +13,7 @@
   "bin": { "wheewise-dealer-mcp": "dist/index.js" },
   "main": "dist/server.js",
   "types": "dist/server.d.ts",
-  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md", "server.json"],
+  "files": ["dist", "docs", "README.md", "LICENSE", "CHANGELOG.md", "server.json"],
   "engines": { "node": ">=20" },
   "publishConfig": { "access": "public", "provenance": true },
   "scripts": {

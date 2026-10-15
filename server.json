@@ -1,14 +1,14 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
   "name": "io.github.wheewise/dealer-mcp",
-  "description": "Manage a Wheewise dealer shop (stock, chats, test drives, reviews, website) from Claude or any MCP assistant.",
-  "version": "0.1.0",
+  "description": "Build your own private shop website with Wheewise as its backend (vehicles, leads, test drives), and manage your dealer shop, from Claude or any MCP assistant.",
+  "version": "0.2.0",
   "repository": { "url": "https://github.com/Wheewise/dealer-mcp", "source": "github" },
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@wheewise/dealer-mcp",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "transport": { "type": "stdio" },
       "environmentVariables": [
         {

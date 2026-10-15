@@ -96,6 +96,11 @@ test("prompts are listed and filled in", async () => {
   const client = await connect(gw.url);
   const { prompts } = await client.listPrompts();
   assert.ok(prompts.some((p) => p.name === "build_my_website"));
+  assert.ok(prompts.some((p) => p.name === "build_private_website"));
+  const site = await client.getPrompt({ name: "build_private_website", arguments: { domain: "https://myshop.com", framework: "Astro" } });
+  assert.match(site.messages[0].content.text, /get_site_api/);
+  assert.match(site.messages[0].content.text, /https:\/\/myshop\.com/);
+  assert.match(site.messages[0].content.text, /Astro/);
   const p = await client.getPrompt({ name: "build_my_website", arguments: { style: "premium" } });
   assert.match(p.messages[0].content.text, /premium/);
   gw.server.close();

@@ -11,7 +11,7 @@ import { PROMPTS } from "./prompts.js";
 export const SERVER_NAME = "wheewise-dealer";
 
 // Tools that remove something visible to buyers or cannot be undone with one more call.
-const DESTRUCTIVE = new Set(["mark_vehicle_sold", "remove_review_reply"]);
+const DESTRUCTIVE = new Set(["mark_vehicle_sold", "remove_review_reply", "rotate_site_key"]);
 
 /** An MCP server that exposes whatever tools the dealer's token allows. The list comes from Wheewise, so it never drifts from the app. */
 export function createServer(client: Pick<GatewayClient, "manifest" | "call">, version: string): Server {
