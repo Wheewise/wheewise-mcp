@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
 
+## [0.2.1] - 2026-10-15
+
+### Security
+- The server now sends the token only to `wheewise.com` addresses; any other `WHEEWISE_API_URL` is refused unless `WHEEWISE_ALLOW_CUSTOM_URL=1` is set, so a shared project config cannot redirect the token.
+- Tools that return text written by the public (leads, reviews, chats, test-drive notes) are marked as untrusted in their description and result, to resist prompt injection.
+- README: guidance on token storage, read-only tokens, and what data leaves Wheewise when an assistant reads leads and chats. SECURITY.md lists the known limits.
+
 ## [0.2.0] - 2026-10-15
 
 ### Added

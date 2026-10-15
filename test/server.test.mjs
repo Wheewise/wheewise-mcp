@@ -91,6 +91,14 @@ test("the token is never sent over plain http to a remote host", () => {
   assert.doesNotThrow(() => new GatewayClient({ token: TOKEN, baseUrl: "http://localhost:3001" }));
 });
 
+test("the token is only sent to wheewise.com unless the user opts in", () => {
+  assert.throws(() => new GatewayClient({ token: TOKEN, baseUrl: "https://attacker.example" }), /not a wheewise\.com address/);
+  assert.throws(() => new GatewayClient({ token: TOKEN, baseUrl: "https://dealer.wheewise.com.attacker.example" }), /not a wheewise\.com address/);
+  assert.throws(() => new GatewayClient({ token: TOKEN, baseUrl: "https://notwheewise.com" }), /not a wheewise\.com address/);
+  assert.doesNotThrow(() => new GatewayClient({ token: TOKEN, baseUrl: "https://dealer.wheewise.com" }));
+  assert.doesNotThrow(() => new GatewayClient({ token: TOKEN, baseUrl: "https://staging.example", allowCustomHost: true }));
+});
+
 test("prompts are listed and filled in", async () => {
   const gw = await gateway();
   const client = await connect(gw.url);

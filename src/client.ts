@@ -24,6 +24,8 @@ export type ClientOptions = {
   /** Per-request timeout in milliseconds. */
   timeoutMs?: number;
   userAgent?: string;
+  /** Allow an address other than wheewise.com (a staging server of your own). Off by default: see the constructor. */
+  allowCustomHost?: boolean;
 };
 
 export class GatewayClient {
@@ -31,11 +33,18 @@ export class GatewayClient {
   private readonly timeoutMs: number;
 
   constructor(private readonly options: ClientOptions) {
-    // The token goes in a header: refuse to send it anywhere that is not HTTPS (localhost is allowed for development).
+    // The token goes in a header, so it may only go to Wheewise. A different address (for example one a shared project config sets
+    // for you) would receive your token, so it is refused unless you opt in. HTTPS only; localhost is allowed for development.
     const base = (options.baseUrl ?? "https://dealer.wheewise.com").replace(/\/+$/, "");
     const url = new URL(base);
     const local = url.hostname === "localhost" || url.hostname === "127.0.0.1";
     if (url.protocol !== "https:" && !local) throw new Error("WHEEWISE_API_URL must be an https:// address.");
+    const wheewise = url.hostname === "wheewise.com" || url.hostname.endsWith(".wheewise.com");
+    if (!wheewise && !local && !options.allowCustomHost) {
+      throw new Error(
+        `WHEEWISE_API_URL points to ${url.hostname}, which is not a wheewise.com address, so your token would be sent there. If that is intended, also set WHEEWISE_ALLOW_CUSTOM_URL=1.`,
+      );
+    }
     this.base = `${base}/api/mcp/v1`;
     this.timeoutMs = options.timeoutMs ?? 30_000;
   }
