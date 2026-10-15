@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
 
+## [0.2.4] - 2026-10-15
+
+### Changed
+- Releases are published with npm Trusted Publishing (GitHub OIDC): no npm token is stored anywhere. No code changes.
+
 ## [0.2.3] - 2026-10-15
 
 ### Changed

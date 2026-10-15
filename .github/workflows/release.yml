@@ -1,6 +1,8 @@
 name: Release
 
-# Push a tag like v0.1.0 to publish. Needs an NPM_TOKEN repository secret (an npm automation token for the @wheewise scope).
+# Push a tag like v0.2.4 to publish. Publishing uses npm Trusted Publishing: npm trusts this exact workflow (Wheewise/wheewise-mcp,
+# release.yml) through GitHub's short-lived OIDC login, so there is no npm token or secret anywhere. The tag must be created by a
+# repository admin (a ruleset blocks everyone else).
 
 on:
   push:
@@ -19,18 +21,18 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          registry-url: https://registry.npmjs.org
+          # No registry-url: it would write an .npmrc that expects an NPM_TOKEN. Trusted Publishing needs none.
       - name: The tag must match package.json and server.json
         run: |
           v="${GITHUB_REF_NAME#v}"
           [ "$(node -p "require('./package.json').version")" = "$v" ] || { echo "::error::package.json version is not $v"; exit 1; }
           [ "$(node -p "require('./server.json').version")" = "$v" ] || { echo "::error::server.json version is not $v"; exit 1; }
+      - name: Use an npm new enough for Trusted Publishing (11.5.1+)
+        run: npm install -g npm@11
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
       - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: GitHub release
         run: gh release create "$GITHUB_REF_NAME" --generate-notes --verify-tag
         env:
