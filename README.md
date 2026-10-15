@@ -1,6 +1,6 @@
 # Wheewise Dealer MCP
 
-[![CI](https://github.com/Wheewise/dealer-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Wheewise/dealer-mcp/actions/workflows/ci.yml)
+[![CI](https://github.com/Wheewise/wheewise-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Wheewise/wheewise-mcp/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/@wheewise/dealer-mcp)](https://www.npmjs.com/package/@wheewise/dealer-mcp)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
