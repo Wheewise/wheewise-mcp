@@ -8,7 +8,7 @@ Include what you found, how to reproduce it, and what an attacker could do with 
 
 ## Scope
 
-- This package (`@wheewise/dealer-mcp`) and how it handles the access token.
+- This package (`@wheewise-mcp/dealer`) and how it handles the access token.
 - The Wheewise gateway it talks to (`https://dealer.wheewise.com/api/mcp/v1`): token handling, scope checks and anything that could let one dealer reach another dealer's data. This is the most important area.
 
 ## If a token may have leaked

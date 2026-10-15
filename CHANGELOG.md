@@ -22,7 +22,7 @@ All notable changes to this project are documented here. The format follows [Kee
 ## [0.1.0] - 2026-10-15
 
 ### Added
-- First release: an MCP server over stdio for Wheewise dealers.
+- First release: an MCP server over stdio for Wheewise dealers. Published as `@wheewise-mcp/dealer`.
 - Read tools: shop details, stock summary, vehicles, buyer chats, test drives, website leads, reviews.
 - Write tools (token needs the `write` scope): price, listing status, sold, finance badge, test-drive status, review replies, shop website.
 - Prompts: "Build my shop website" and "Daily shop briefing".

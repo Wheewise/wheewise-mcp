@@ -1,7 +1,7 @@
 # Wheewise Dealer MCP
 
 [![CI](https://github.com/Wheewise/wheewise-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/Wheewise/wheewise-mcp/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/@wheewise/dealer-mcp)](https://www.npmjs.com/package/@wheewise/dealer-mcp)
+[![npm](https://img.shields.io/npm/v/@wheewise-mcp/dealer)](https://www.npmjs.com/package/@wheewise-mcp/dealer)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 **Build your own private website for your shop with an AI assistant, with no database to set up.** This [Model Context Protocol](https://modelcontextprotocol.io) server connects Claude (or any MCP assistant) to your [Wheewise dealer](https://dealer.wheewise.com) account. Wheewise becomes your website's backend:
@@ -26,7 +26,7 @@ The assistant reads your shop, creates the site key, builds the site in the fram
   "mcpServers": {
     "wheewise": {
       "command": "npx",
-      "args": ["-y", "@wheewise/dealer-mcp"],
+      "args": ["-y", "@wheewise-mcp/dealer"],
       "env": { "WHEEWISE_API_TOKEN": "wwd_your_token_here" }
     }
   }
@@ -36,7 +36,7 @@ The assistant reads your shop, creates the site key, builds the site in the fram
 **Claude Code:**
 
 ```bash
-claude mcp add wheewise --env WHEEWISE_API_TOKEN=wwd_your_token_here -- npx -y @wheewise/dealer-mcp
+claude mcp add wheewise --env WHEEWISE_API_TOKEN=wwd_your_token_here -- npx -y @wheewise-mcp/dealer
 ```
 
 The token then sits in your shell history and in the assistant's config file. Prefer a config file that only you can read, and never commit it to a repository or share it in a chat.
