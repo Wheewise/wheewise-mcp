@@ -1,0 +1,18 @@
+name: Feature request
+description: Something you would like the assistant to be able to do for your shop
+labels: [enhancement]
+body:
+  - type: textarea
+    id: want
+    attributes:
+      label: What would you like to ask the assistant to do?
+      description: In your own words, as you would say it to a person.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why does that help your shop?
+  - type: markdown
+    attributes:
+      value: New tools are built in the Wheewise dealer app and appear here automatically.

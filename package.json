@@ -1,0 +1,32 @@
+{
+  "name": "@wheewise/dealer-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Wheewise dealers: let Claude or any MCP assistant manage your stock, buyer chats, test drives, reviews and shop website.",
+  "mcpName": "io.github.wheewise/dealer-mcp",
+  "type": "module",
+  "license": "MIT",
+  "author": "Wheewise",
+  "homepage": "https://github.com/Wheewise/dealer-mcp#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/Wheewise/dealer-mcp.git" },
+  "bugs": { "url": "https://github.com/Wheewise/dealer-mcp/issues" },
+  "keywords": ["mcp", "model-context-protocol", "wheewise", "dealer", "used-cars", "claude"],
+  "bin": { "wheewise-dealer-mcp": "dist/index.js" },
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
+  "files": ["dist", "README.md", "LICENSE", "CHANGELOG.md", "server.json"],
+  "engines": { "node": ">=20" },
+  "publishConfig": { "access": "public", "provenance": true },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepublishOnly": "npm run typecheck && npm test"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.9.0"
+  }
+}
