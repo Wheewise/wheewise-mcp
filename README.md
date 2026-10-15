@@ -12,7 +12,7 @@
 
 > "Build me a website for my shop at myshop.com with a premium feel. Show my vehicles, and let visitors enquire or book a test drive."
 
-The assistant reads your shop, creates the site key, builds the site in the framework you choose, and wires the forms to your Leads. Your site stays yours: host it anywhere.
+The assistant reads your shop, creates the site key, builds the site in the framework you choose, and wires the forms to your Leads. Your site stays yours: host it anywhere. A complete working example (vehicles, search, detail pages, enquiry and test-drive forms, no build step) is in [examples/private-site](examples/private-site).
 
 ## Quick start
 
@@ -75,6 +75,7 @@ The tools you get depend on your token: a read-only token lists only the "read" 
 | `shop_summary` | read | Stock by status and stage, money tied up, expected profit, old stock |
 | `list_vehicles`, `get_vehicle` | read | Search and open vehicles, including private costs |
 | `list_leads` | read | Enquiries and test-drive requests from your websites |
+| `mark_leads_read` | write | Clear the "new" badge on website leads |
 | `list_enquiries`, `get_conversation` | read | Buyer chats on Wheewise |
 | `list_test_drives` | read | Test-drive bookings made on Wheewise |
 | `list_reviews` | read | Reviews and the rating summary |

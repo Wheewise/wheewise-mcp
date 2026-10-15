@@ -8,6 +8,8 @@ All notable changes to this project are documented here. The format follows [Kee
 - **Private websites without a database.** A dealer's own website can now use Wheewise as its backend through the Site API (`/api/site/v1`): live vehicles, shop details, and enquiries and test-drive requests that arrive in the dealer's Leads.
 - Tools `get_site_api`, `rotate_site_key` and `set_site_allowed_origins` to set the site up; `list_leads` now returns `kind` (ENQUIRY or TEST_DRIVE) and `preferred_at`.
 - Prompt "Build my own private website".
+- `mark_leads_read` tool.
+- A complete example website in `examples/private-site` (plain HTML/CSS/JS, no build step).
 - [docs/site-api.md](docs/site-api.md) and a public OpenAPI description at `/api/site/v1/openapi.json`.
 
 ## [0.1.0] - 2026-10-15
