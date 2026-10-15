@@ -1,6 +1,6 @@
 {
   "name": "@wheewise-mcp/dealer",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "MCP server for Wheewise dealers: build your own private website with Wheewise as its backend (vehicles, leads, test drives), and manage your shop from Claude or any MCP assistant.",
   "mcpName": "io.github.wheewise/wheewise-mcp",
   "type": "module",

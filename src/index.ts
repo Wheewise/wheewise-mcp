@@ -14,12 +14,19 @@ if (!token) {
 }
 
 const version = (JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")) as { version: string }).version;
-const client = new GatewayClient({
-  token,
-  baseUrl: process.env.WHEEWISE_API_URL,
-  userAgent: `wheewise-dealer-mcp/${version}`,
-  allowCustomHost: process.env.WHEEWISE_ALLOW_CUSTOM_URL === "1",
-});
+let client: GatewayClient;
+try {
+  client = new GatewayClient({
+    token,
+    baseUrl: process.env.WHEEWISE_API_URL,
+    userAgent: `wheewise-dealer-mcp/${version}`,
+    allowCustomHost: process.env.WHEEWISE_ALLOW_CUSTOM_URL === "1",
+  });
+} catch (err) {
+  // A refused address is a setup mistake to explain, not a crash with a stack trace.
+  console.error(err instanceof Error ? err.message : "Invalid configuration.");
+  process.exit(1);
+}
 
 await createServer(client, version).connect(new StdioServerTransport());
 console.error(`Wheewise dealer MCP ${version} ready.`);
