@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project uses [Semantic Versioning](https://semver.org/).
 
+## [0.2.5] - 2026-10-15
+
+### Changed
+- README: icons replace emoji, a "What's new" section, and a link to the full documentation at https://www.wheewise.com/docs (also available as one file for AI assistants at /docs/llms-full.txt). No code changes.
+
 ## [0.2.4] - 2026-10-15
 
 ### Changed

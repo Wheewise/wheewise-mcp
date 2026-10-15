@@ -15,28 +15,28 @@ Wheewise is the backend: your vehicles, your leads, your test drives.
 [![Node](https://img.shields.io/badge/node-%E2%89%A5%2020-52525b)](package.json)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-[**Quick start**](#-quick-start) · [**What it can do**](#-what-the-assistant-can-do) · [**Site API**](#-how-your-website-talks-to-wheewise) · [**Safety**](#-safety) · [**Troubleshooting**](#-troubleshooting)
+[**Quick start**](#quick-start) · [**What's new**](#whats-new) · [**What it can do**](#tools) · [**Site API**](#site-api) · [**Safety**](#safety) · [**Docs**](https://www.wheewise.com/docs) · [**Troubleshooting**](#troubleshooting)
 
 </div>
 
 <br />
 
-This [Model Context Protocol](https://modelcontextprotocol.io) server connects Claude, or any MCP assistant, to your [Wheewise dealer](https://dealer.wheewise.com) account. Describe the site you want; the assistant builds it and connects it to your shop.
+This [Model Context Protocol](https://modelcontextprotocol.io) server connects Claude, or any MCP assistant, to your [Wheewise dealer](https://dealer.wheewise.com) account. Describe the site you want; the assistant builds it and connects it to your shop. New here? Read the [documentation](https://www.wheewise.com/docs).
 
 > *"Build me a website for my shop at myshop.com with a premium feel. Show my vehicles, and let visitors enquire or book a test drive."*
 
 <table>
   <tr>
     <td width="33%" valign="top">
-      <h4>🌐 Your own website</h4>
+      <h4><img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/globe.svg" width="20" height="20" align="top" alt="" />&nbsp;Your own website</h4>
       Your <b>live vehicles</b> appear on a site you own and host anywhere. Publish or change a listing in the dealer app and the site updates.
     </td>
     <td width="33%" valign="top">
-      <h4>📥 Leads &amp; test drives</h4>
+      <h4><img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/inbox.svg" width="20" height="20" align="top" alt="" />&nbsp;Leads &amp; test drives</h4>
       Enquiries and <b>test-drive requests</b> from your site land in your <b>Leads</b>, and you are notified. Nothing else to run.
     </td>
     <td width="33%" valign="top">
-      <h4>🛠️ Run the shop</h4>
+      <h4><img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/wrench.svg" width="20" height="20" align="top" alt="" />&nbsp;Run the shop</h4>
       Ask for prices, listings, test drives and review replies in plain words. Every change is recorded in your audit log.
     </td>
   </tr>
@@ -47,7 +47,21 @@ This [Model Context Protocol](https://modelcontextprotocol.io) server connects C
                                           vehicles · leads · test drives        visitors
 ```
 
-## 🚀 Quick start
+<a id="whats-new"></a>
+
+## <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/tag.svg" width="26" height="26" align="top" alt="" />&nbsp;What's new
+
+**Latest: 0.2.5** (October 2026)
+
+- <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/book.svg" width="16" height="16" align="top" alt="" />&nbsp;Full documentation for buyers, dealers, this server and the Site API now lives at [**wheewise.com/docs**](https://www.wheewise.com/docs). It is written for AI assistants too: the whole guide is one file at [`/docs/llms-full.txt`](https://www.wheewise.com/docs/llms-full.txt), so you can ask your assistant to walk you through the app and these settings.
+- <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/git.svg" width="16" height="16" align="top" alt="" />&nbsp;**0.2.4**: releases are published with npm Trusted Publishing (GitHub OIDC). No npm token exists anywhere; every version carries a provenance statement you can verify on npm.
+- <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/lock.svg" width="16" height="16" align="top" alt="" />&nbsp;**0.2.1 and 0.2.2**: your token is sent only to `wheewise.com`, and tools that return text written by the public say so, to resist prompt injection.
+
+Every release is listed in the [changelog](CHANGELOG.md) and on the [releases page](https://github.com/Wheewise/wheewise-mcp/releases).
+
+<a id="quick-start"></a>
+
+## <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/rocket.svg" width="26" height="26" align="top" alt="" />&nbsp;Quick start
 
 **1. Create a token.** In the dealer app open **Settings → AI assistant access** and create an *assistant token*. Leave **Allow changes** off for look-only; turn it on when the assistant should create your site key and edit your shop. Copy it: it is shown once.
 
@@ -92,7 +106,9 @@ They take the same `command`, `args` and `env` as above. Node.js 20 or newer is 
 
 **3. Ask.** For example: *"Use the build_private_website prompt for https://myshop.com"*, or just describe the site you want.
 
-## 🌍 How your website talks to Wheewise
+<a id="site-api"></a>
+
+## <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/globe.svg" width="26" height="26" align="top" alt="" />&nbsp;How your website talks to Wheewise
 
 Your site calls the **Site API** with a **site key** (`wws_…`). The key is safe in front-end code: it can only read your published vehicles and create leads, and a browser may only use it from websites you list. The assistant sets this up; details are in [docs/site-api.md](docs/site-api.md) and the live [OpenAPI description](https://dealer.wheewise.com/api/site/v1/openapi.json).
 
@@ -113,7 +129,9 @@ await fetch(`${API}/leads`, {
 
 A complete, working site you can start from (vehicles, search, detail pages, enquiry and test-drive forms, no build step) is in [examples/private-site](examples/private-site).
 
-## 🧰 What the assistant can do
+<a id="tools"></a>
+
+## <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/wrench.svg" width="26" height="26" align="top" alt="" />&nbsp;What the assistant can do
 
 The tools you get depend on your token: a read-only token lists only the *read* ones.
 
@@ -142,7 +160,9 @@ The tools you get depend on your token: a read-only token lists only the *read* 
 
 Not included yet, on purpose: creating vehicles and uploading photos, and sending chat messages as you. These need more safeguards first.
 
-## 🔒 Safety
+<a id="safety"></a>
+
+## <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/shield.svg" width="26" height="26" align="top" alt="" />&nbsp;Safety
 
 - **Your token, your shop.** The shop comes from the token or site key, never from an argument, so nothing can reach another dealer's data.
 - **Two different keys.** The *assistant token* (`wwd_…`) is secret: it stays in your assistant's settings and never goes into a website. The *site key* (`wws_…`) is public by design and only does what a visitor could.
@@ -156,7 +176,9 @@ Not included yet, on purpose: creating vehicles and uploading photos, and sendin
 
 Treat the assistant token like a password. See [SECURITY.md](SECURITY.md) to report a vulnerability.
 
-## ⚙️ Configuration
+<a id="configuration"></a>
+
+## <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/sliders.svg" width="26" height="26" align="top" alt="" />&nbsp;Configuration
 
 | Variable | Required | Default |
 |---|---|---|
@@ -164,7 +186,9 @@ Treat the assistant token like a password. See [SECURITY.md](SECURITY.md) to rep
 | `WHEEWISE_API_URL` | no | `https://dealer.wheewise.com`. Must be https (or localhost) and a wheewise.com address, unless `WHEEWISE_ALLOW_CUSTOM_URL=1` |
 | `WHEEWISE_ALLOW_CUSTOM_URL` | no | Set to `1` to send the token to a non-wheewise.com address (your own staging server) |
 
-## 🩺 Troubleshooting
+<a id="troubleshooting"></a>
+
+## <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/lifebuoy.svg" width="26" height="26" align="top" alt="" />&nbsp;Troubleshooting
 
 - **"Your Wheewise token is invalid, expired or revoked"**: create a new assistant token in the dealer app.
 - **A change tool is missing**: the token is read-only. Create one with **Allow changes**.
@@ -172,7 +196,9 @@ Treat the assistant token like a password. See [SECURITY.md](SECURITY.md) to rep
 - **"Could not reach Wheewise"**: check your connection; the server needs outbound HTTPS.
 - Logs go to stderr, so they appear in your assistant's MCP log, never in the conversation.
 
-## 🧑‍💻 Development
+<a id="development"></a>
+
+## <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/icons/code.svg" width="26" height="26" align="top" alt="" />&nbsp;Development
 
 ```bash
 npm install
@@ -182,7 +208,7 @@ npm run typecheck
 
 The server is deliberately thin. It fetches the tool list and argument schemas from the Wheewise gateway (`/api/mcp/v1/tools`) and forwards calls (`/api/mcp/v1/call`), so a new tool in the dealer app appears here without a release.
 
-**Releasing:** update `CHANGELOG.md` and `version` in `package.json` and `server.json`, then push a tag such as `v0.2.3`. The release workflow checks the tag matches the version, runs the tests, publishes to npm with provenance and creates the GitHub release.
+**Releasing:** update `CHANGELOG.md` and `version` in `package.json` and `server.json`, then create a tag such as `v0.2.5` (repository admins only). The release workflow checks the tag matches the version, runs the tests, publishes to npm with provenance through Trusted Publishing (no stored token) and creates the GitHub release.
 
 Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
 
@@ -193,7 +219,7 @@ Contributions are welcome: see [CONTRIBUTING.md](CONTRIBUTING.md).
 <img src="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/logo-tile.png" alt="Wheewise" width="88" />
 
 **Wheewise**: buy and sell pre-owned vehicles.<br />
-[wheewise.com](https://www.wheewise.com) · [Dealer app](https://dealer.wheewise.com) · [MIT license](LICENSE)
+[wheewise.com](https://www.wheewise.com) · [Documentation](https://www.wheewise.com/docs) · [Dealer app](https://dealer.wheewise.com) · [MIT license](LICENSE)
 
 <sub><a href="https://raw.githubusercontent.com/Wheewise/wheewise-mcp/main/assets/wheewise-motion.mp4">Watch the Wheewise motion logo (MP4)</a></sub>
 
